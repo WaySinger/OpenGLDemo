@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.lenovo.way.opengldemo.R;
 import com.lenovo.way.opengldemo.two.ModelSurfaceView;
@@ -33,6 +36,9 @@ public class WantActivity extends AppCompatActivity {
     private final float TRACKBALL_SCALE_FACTOR = 36.0f;
     private float distanceZ = -6.0f;
 
+    // back button
+    private Button slamStop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +52,18 @@ public class WantActivity extends AppCompatActivity {
         int height = display.getHeight();
 
         relativelayout = (RelativeLayout) findViewById(R.id.relativelayout_want);
+        slamStop = (Button) findViewById(R.id.slam_stop);
+
+        slamStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(WantActivity.this,"STOP SLAM",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         mModelSurfaceView1 = new ModelSurfaceView(this);
-        mModelSurfaceView1.setZOrderOnTop(true);
+//        mModelSurfaceView1.setZOrderOnTop(true);
 //        mModelSurfaceView1.setEGLConfigChooser(8, 8, 8, 8, 16, 0); // 设置颜色缓存为RGBA,位数都为8 depth缓存位数为16 stencil缓存位数为0
         mModelSurfaceView1.getHolder().setFormat(PixelFormat.TRANSPARENT);
         mModelSurfaceView1.setRenderer(mWantGLRender1);
@@ -58,7 +73,7 @@ public class WantActivity extends AppCompatActivity {
         relativelayout.addView(mModelSurfaceView1);
 
         mModelSurfaceView2 = new ModelSurfaceView(this);
-        mModelSurfaceView2.setZOrderOnTop(true);
+//        mModelSurfaceView2.setZOrderOnTop(true);
 //        mModelSurfaceView2.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
         mModelSurfaceView2.getHolder().setFormat(PixelFormat.TRANSPARENT);
         mModelSurfaceView2.setRenderer(mWantGLRender2);
@@ -66,6 +81,16 @@ public class WantActivity extends AppCompatActivity {
         lp2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         mModelSurfaceView2.setLayoutParams(lp2);
         relativelayout.addView(mModelSurfaceView2);
+
+//        Button btn = new Button(this);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(WantActivity.this,"123",Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        btn.setText("123");
+//        relativelayout.addView(btn);
 
         mWantGLRender1.start();
         mWantGLRender2.start();

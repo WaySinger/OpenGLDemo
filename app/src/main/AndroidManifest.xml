@@ -12,27 +12,20 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".tutorialone.TutorialPartI"
-            android:screenOrientation="landscape">
-        </activity>
-
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".two.Main2Activity"
-            android:screenOrientation="landscape">
-        </activity>
-
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".two.GyroActivity"
-            android:screenOrientation="landscape">
-
-        </activity>
-
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".three.Main3Activity"
-            android:screenOrientation="landscape">
-        </activity>
-
-        <activity android:name=".want.WantActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".want.WantActivity"
+            android:screenOrientation="landscape"></activity>
+        <activity android:name=".openes.EsCubeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
